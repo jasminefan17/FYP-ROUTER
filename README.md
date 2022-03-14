@@ -2,7 +2,6 @@
 python file
 
 wrtServer.py 应用于路由器中
-
   <Br/>getClient这个函数是获取连接路由器的客户端信息的
   <Br/>queryServer这个函数是跟服务器查询访问权限的
   <Br/>accessControl这个函数是根据服务器的返回，决定是否让客户端联网的
