@@ -32,7 +32,7 @@ def server( ip, port, ACCUSERS,ACCCTRLS,CLIMSG ):
                 break
             print( indata.decode() )
             conn.send( CLIMSG.get().encode() )
-#acctrls的信息解析，0 drop 1 access 通过防火墙来实现是否联网，同时记录链接数量，若超过，将返还给客户端。
+#acctrls的信息解析，0 drop 1 access 通过防火墙来实现是否联网，同时记录链接数量，若超过，将返还消息给客户端。
 def accessControl( ACCUSERS,ACCCTRLS,mutex ):
     rule = []
     while True:
