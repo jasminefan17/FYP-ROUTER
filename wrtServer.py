@@ -5,15 +5,15 @@ import time
 import os
 from datetime import datetime
 from multiprocessing import Process, Queue, Lock
-
+#本地端口
 HOST = '0.0.0.0'
 PORT = 7777
-
+#服务器ip和端口
 ServerIP = '192.168.1.4'
 ServerPort = 8888
-
+#连接数量限制
 MAXCONN = 2
-
+#本地服务器
 def server( ip, port, ACCUSERS,ACCCTRLS,CLIMSG ):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -32,7 +32,7 @@ def server( ip, port, ACCUSERS,ACCCTRLS,CLIMSG ):
                 break
             print( indata.decode() )
             conn.send( CLIMSG.get().encode() )
-
+#acctrls的信息解析，0 drop 1 access 通过防火墙来实现是否联网，同时记录链接数量，若超过，将返还给客户端。
 def accessControl( ACCUSERS,ACCCTRLS,mutex ):
     rule = []
     while True:
@@ -95,7 +95,7 @@ def accessControl( ACCUSERS,ACCCTRLS,mutex ):
             rule = []
             os.system("/etc/init.d/firewall restart")
             mutex.release()
-
+#向服务器查询，连接服务器，发送accusers队列的消息，服务器转回的消息存入acctrls中。
 def queryServer( ACCUSERS,ACCCTRLS ):
     while True:
         try:
@@ -115,7 +115,7 @@ def queryServer( ACCUSERS,ACCCTRLS ):
             time.sleep(10)
         else:
             print("connected to server")
-
+# 该函数获取客户端信息，写入dhcp文件将保存所有重要信息，将信息组成accusers队列。128行是发送一旦连接后发送的系统时间，由于路由器断开连接后不计算时间，待解决。
 def getClient( ACCUSERS,ACCCTRLS ):
     while True:
         with open('/tmp/dhcp.leases', encoding='utf8') as f:
