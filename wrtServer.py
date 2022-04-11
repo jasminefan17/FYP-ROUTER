@@ -115,7 +115,7 @@ def queryServer( ACCUSERS,ACCCTRLS ):
             time.sleep(10)
         else:
             print("connected to server")
-# 该函数获取客户端信息，写入dhcp文件将保存所有重要信息，将信息组成accusers队列。128行是发送一旦连接后发送的系统时间，由于路由器断开连接后不计算时间，待解决。
+# 该函数获取客户端信息，写入dhcp文件将保存所有重要信息，dhcp实时保存的连接信息，它是dhcp服务器给客户端分配ip的时候记录的，将信息组成accusers队列。128行是发送一旦连接后发送的系统时间，由于路由器断开连接后不计算时间，待解决。
 def getClient( ACCUSERS,ACCCTRLS ):
     while True:
         with open('/tmp/dhcp.leases', encoding='utf8') as f:
