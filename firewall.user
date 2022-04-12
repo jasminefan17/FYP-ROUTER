@@ -1,0 +1,21 @@
+iptables -I FORWARD -m mac --mac-source 11:22:33:44:55:66 -j DROP
+iptables -I FORWARD -m mac --mac-source 33:44:55:66:77:88 -j DROP
+iptables -I FORWARD -m mac --mac-source 62:23:d3:f5:43:88 -j ACCEPT
+iptables -I FORWARD -m mac --mac-source 12:6e:a9:ff:65:3b -j ACCEPT
+iptables -I FORWARD -m mac --mac-source 72:09:0d:a7:79:dc -j DROP
+iptables -I FORWARD -m mac --mac-source 10:32:7e:c9:2c:e0 -j DROP
+iptables -I FORWARD -m mac --mac-source f2:85:9e:d3:71:37 -j DROP
+iptables -I FORWARD -m mac --mac-source 82:07:1e:90:8a:d5 -j ACCEPT
+iptables -I FORWARD -m mac --mac-source d8:9e:61:88:b7:21 -j ACCEPT
+iptables -I FORWARD -m mac --mac-source 92:b5:85:09:e4:d7 -j DROP
+iptables -I FORWARD -m mac --mac-source ac:e3:42:24:19:da -j DROP
+iptables -I FORWARD -m mac --mac-source a2:ac:e4:7a:8a:b3 -j DROP
+iptables -I FORWARD -m mac --mac-source 72:81:0f:34:55:85 -j DROP
+iptables -I FORWARD -m mac --mac-source d2:ae:5b:65:3e:60 -j ACCEPT
+iptables -I FORWARD -m mac --mac-source a0:18:28:73:6d:83 -j ACCEPT
+iptables -I FORWARD -p all -m mac --mac-source 62:23:d3:f5:43:88 -j REJECT
+iptables -I FORWARD -p all -m mac --mac-source 12:6e:a9:ff:65:3b -j REJECT
+iptables -I FORWARD -p all -m mac --mac-source 10:32:7e:c9:2c:e0 -j REJECT
+iptables -I FORWARD -p all -m mac --mac-source f2:85:9e:d3:71:37 -j REJECT
+iptables -I FORWARD -p all -m mac --mac-source 82:07:1e:90:8a:d5 -j REJECT
+iptables -I FORWARD -p all -m mac --mac-source 72:09:0d:a7:79:dc -j REJECT
